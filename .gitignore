@@ -1,0 +1,7 @@
+node_modules/
+dist/
+out/
+*.AppImage
+*.log
+*.tmp
+.DS_Store
