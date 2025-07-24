@@ -31,7 +31,7 @@
 ### 1. Local (any Linux distribution)
 
 ```bash
-git clone https://github.com/yourname/android-messages-desktop.git
+git clone https://github.com/shadyslim2018/android-messages-desktop.git
 cd android-messages-desktop
 npm install          # fetch dependencies
 npm start            # run in development mode
@@ -50,7 +50,7 @@ npm run dist         # output goes to dist/
 A ready‑to‑use **PKGBUILD** is included for a proper system package.
 
 ```bash
-git clone https://github.com/yourname/android-messages-desktop.git
+git clone https://github.com/shadyslim2018/android-messages-desktop.git
 cd android-messages-desktop
 makepkg -si          # build & install (will ask for sudo)
 ```
@@ -69,7 +69,7 @@ sudo pacman -Rns android-messages-desktop
 ## 📦 Included PKGBUILD (full script)
 
 ```bash
-# Maintainer: Your Name <you@example.com>
+# Maintainer: AK
 pkgname=android-messages-desktop
 pkgver=1.0.0
 pkgrel=1
@@ -79,10 +79,8 @@ url="https://github.com/yourname/android-messages-desktop"
 license=('MIT')
 depends=('electron' 'hicolor-icon-theme')
 makedepends=('npm' 'nodejs' 'git')
-source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-  "icon.png"
-)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/shadyslim2018/android-messages-desktop/archive/refs/tags/v${pkgver}.tar.gz"
+        "icon.png")
 sha256sums=('SKIP' 'SKIP')
 
 build() {
@@ -93,10 +91,10 @@ build() {
 
 package() {
   install -dm755 "${pkgdir}/opt/${pkgname}"
-  cp -r "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/"*         "${pkgdir}/opt/${pkgname}/"
+  cp -r "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname}/"
 
-  # Desktop launcher
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<EOF
+  # Install desktop launcher
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" << EOF
 [Desktop Entry]
 Type=Application
 Name=Android Messages Desktop
@@ -107,8 +105,8 @@ Categories=Network;Chat;
 Terminal=false
 EOF
 
-  # Icon
-  install -Dm644 "${srcdir}/icon.png"         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/android-messages-desktop.png"
+  # Install icon
+  install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/android-messages-desktop.png"
 }
 ```
 
