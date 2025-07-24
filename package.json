@@ -1,0 +1,31 @@
+{
+  "name": "android-messages-desktop",
+  "version": "1.0.0",
+  "description": "Electron wrapper for Google Messages (Android Messages) Web",
+  "main": "main.js",
+  "author": "AK",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.ak.androidmessagesdesktop",
+    "productName": "Android Messages Desktop",
+    "files": [
+      "**/*"
+    ],
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Network",
+      "icon": "icon.png"
+    }
+  }
+}
